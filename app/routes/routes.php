@@ -1,6 +1,8 @@
 <?php
 
-require_once "../app/data/mysql.php";
+
+
+
 
 $db = new MySQL();
 

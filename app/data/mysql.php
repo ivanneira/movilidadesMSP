@@ -1,7 +1,5 @@
 <?php 
 
-//require_once "..\..\src\routes.php";
-
 class MySQL{
 
 
@@ -10,10 +8,10 @@ class MySQL{
 	
 	  public function MySQL(){ 
 	  	
-	if (!defined('DB_HOST')) define('DB_HOST','localhost');
-	if (!defined('DB_USER')) define('DB_USER','root'); //sebafd1
-	if (!defined('DB_PASS')) define('DB_PASS',''); //universal123
-	if (!defined('DB_NAME')) define('DB_NAME','test');
+	 define('DB_HOST',$DATABASE_HOST);
+	 define('DB_USER', $DATABASE_USER);
+	 define('DB_PASS',$DATABASE_PASS);
+	define('DB_NAME',$DATABASE_NAME);
 	
     if(!isset($this->conexion)){
       $this->conexion = (mysqli_connect(DB_HOST,DB_USER,DB_PASS))
