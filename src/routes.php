@@ -9,18 +9,7 @@
 //    return $this->renderer->render($response, 'index.phtml', $args);
 //});
 
-class claseDeEjemplo {
-
-    public $var1 = "test";
-
-    public $var2 = "test1";
-}
-
-
-$app->get('/test', function ($request, $response, $args) {
-
-    $testData = new claseDeEjemplo();
-
-    return json_encode($testData);
-
-});
+//
+//$app->get('/test', function ($request, $response, $args) {
+//
+//});
