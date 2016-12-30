@@ -2,7 +2,8 @@
 
 
 
-
+include ("../app/data/db.inc.php");
+include( "../app/data/mysql.php");
 
 $db = new MySQL();
 
