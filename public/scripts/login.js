@@ -14,7 +14,7 @@ $(function () {
                 alert("Nombre de usuario o contraseña incorrecta");
             }else{
 
-                window.location.href = "MANDALEUNAPAGINAPUNTOCOM";
+                window.location.href = "aindex";
             }
 
         });

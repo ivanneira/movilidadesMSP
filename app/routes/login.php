@@ -3,9 +3,13 @@
 include ("../app/data/db.inc.php");
 include( "../app/data/mysql.php");
 
+//login
+$app->get('/login', function($req, $res) use($app){
 
+    return $this->renderer->render($res, 'login.php');
+});
 
-
+// intenta acceso 1 es permitido 0 es no encontrado
 $app->post('/trylogin/{usr}/{pass}', function( $request,  $response) use($app){
 
     $db = new MySQL();
@@ -22,8 +26,6 @@ $app->post('/trylogin/{usr}/{pass}', function( $request,  $response) use($app){
 
          $array = $row['id'];
 
-
-
     }else{
         $array = 0;
     }
@@ -31,9 +33,3 @@ $app->post('/trylogin/{usr}/{pass}', function( $request,  $response) use($app){
     return json_encode($array);
 
 });
-
-//$app->post('/trylogin/', function( $request,  $response) use($app){
-//
-//    return "test";
-//
-//});
