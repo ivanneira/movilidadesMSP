@@ -8,10 +8,10 @@ class MySQL{
 	
 	  public function MySQL(){ 
 	  	
-	if (!defined('DB_HOST')) define('DB_HOST','DATABASE_HOST');
-	if (!defined('DB_USER')) define('DB_USER', 'DATABASE_USER');
-	if (!defined('DB_PASS')) define('DB_PASS','DATABASE_PASS');
-	if (!defined('DB_NAME')) define('DB_NAME','DATABASE_NAME');
+	if (!defined('DB_HOST')) define('DB_HOST',DATABASE_HOST);
+	if (!defined('DB_USER')) define('DB_USER', DATABASE_USER);
+	if (!defined('DB_PASS')) define('DB_PASS',DATABASE_PASS);
+	if (!defined('DB_NAME')) define('DB_NAME',DATABASE_NAME);
 	
     if(!isset($this->conexion)){
       $this->conexion = (mysqli_connect(DB_HOST,DB_USER,DB_PASS))
