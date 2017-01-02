@@ -9,13 +9,25 @@ $db = new MySQL();
 
 
 //raiz
-$app->get('/', function ($reqt, $res, $args) use($app){
+//$app->get('/', function ($reqt, $res, $args) use($app){
+//
+//    if(isset($_SESSION['id'])){
+//        //ruta a index de usuario
+//    }else {
+//        return $res->withStatus(302)->withHeader('Location','login');
+//    }
+//
+//});
 
-    if(isset($_SESSION['id'])){
-        //ruta a index de usuario
-    }else {
-        return $res->withStatus(302)->withHeader('Location','login');
-    }
+
+//engancha todos
+$app->any('/', function($req, $res, $args) use($app) {
+
+        if(isset($_SESSION['id'])){
+            //ruta a index de usuario
+        }else {
+            return $res->withStatus(302)->withHeader('Location','login');
+        }
 
 });
 
