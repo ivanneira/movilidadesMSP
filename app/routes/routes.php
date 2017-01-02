@@ -1,12 +1,5 @@
 <?php
-
-
-
-include ("../app/data/db.inc.php");
-include( "../app/data/mysql.php");
-
-$db = new MySQL();
-
+include ("login.php");
 
 //raiz
 //$app->get('/', function ($reqt, $res, $args) use($app){
@@ -21,7 +14,7 @@ $db = new MySQL();
 
 
 //engancha todos
-$app->any('/', function($req, $res, $args) use($app) {
+$app->get('/', function($req, $res, $args) use($app) {
 
         if(isset($_SESSION['id'])){
             //ruta a index de usuario
@@ -32,13 +25,17 @@ $app->any('/', function($req, $res, $args) use($app) {
 });
 
 //login
-$app->get('/login', function($request, $response, $args) use($app,$db){
-    $result = $db->consulta('SELECT * FROM test');
-    $array = new stdClass();
-    while($row = $db->fetch_array($result)) {
-        $array = $row;
+$app->get('/login', function($req, $res) use($app){
+//    $result = $db->consulta('SELECT * FROM test');
+//    $array = new stdClass();
+//    while($row = $db->fetch_array($result)) {
+//        $array = $row;
+//
+//    }
+//
+//    return json_encode($array);
 
-    }
-
-    return json_encode($array);
+    return $this->renderer->render($res, 'login.php');
 });
+
+
