@@ -3,12 +3,11 @@ $(function () {
     $("#btningresar").click(function () {
 
         $.ajax({
-            url: "trylogin/"+ $("#txt_usr").val() + "/" + $("#txt_pwd").val(),
-            type: "POST"
-            //context: document.body
-        }).done(function(data) {
+            url: "trylogin/"+ $("#txt_usr").val() + "/" + $.md5($("#txt_pwd").val()),
+            type: "POST",
+            global: true
 
-            //console.dir(data);
+        }).done(function(data) {
 
             if(data == 0){
                 alert("Nombre de usuario o contraseña incorrecta");

@@ -65,6 +65,7 @@
 <script src="scripts/jquery-3.1.1.min.js"></script>
 <script src="scripts/bootstrap.min.js"></script>
 <script src="scripts/login.js"></script>
+<script src="scripts/jQuery-MD5.js"></script>
 <!--<script type="text/javascript" charset="utf-8" src="cordova.js"></script>-->
 <!--<script src="js/index.js"></script>-->
 </body>
