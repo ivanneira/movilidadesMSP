@@ -7,30 +7,15 @@
     <title>Movilidades  MSP| Acceso seguro</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="stylesheet" href="styles/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="styles/modal.css">
     <link rel="stylesheet" href="styles/bootstrap.min.css">
     <link rel="stylesheet" href="styles/ls.css">
+
 
 </head>
 <body class="hold-transition login-page">
 <div class="bg" style=""></div>
-<!-- Modal -->
-<div id="mensajeModal" class="modal"  data-easein="flipBounceYIn" tabindex="-1" data-keyboard="false" data-backdrop="static"  role="dialog"
-     aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-    <div class="modal-dialog" style="opacity: 1; display: block;">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel"><b>A</b>cceso <b>S</b>eguro</h4>
-            </div>
-            <div class="modal-body">
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Entendido</button>
-            </div>
-        </div>
-    </div>
-</div>
-<!--END -->
+
 <div class="login-box">
     <div class="login-logo">
         <a href="#">[ Movilidades <b>M.S.P</b> ]</a>
@@ -66,6 +51,7 @@
 <script src="scripts/bootstrap.min.js"></script>
 <script src="scripts/login.js"></script>
 <script src="scripts/jQuery-MD5.js"></script>
+<script src="scripts/modal.js"></script>
 <!--<script type="text/javascript" charset="utf-8" src="cordova.js"></script>-->
 <!--<script src="js/index.js"></script>-->
 </body>

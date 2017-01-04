@@ -12,6 +12,7 @@ $app->get('/login', function($req, $res) use($app){
 // intenta acceso 1 es permitido 0 es no encontrado
 $app->post('/trylogin/{usr}/{pass}', function( $request,  $response) use($app){
 
+sleep(10);
     $db = new MySQL();
 
     $user = $request->getAttribute('usr');

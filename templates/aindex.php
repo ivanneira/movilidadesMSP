@@ -22,6 +22,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         page. However, you can choose any other skin. Make sure you
         apply the skin class to the body tag so the changes take effect.
   -->
+  <link rel="stylesheet" href="styles/modal.css">
   <link rel="stylesheet" href="styles/skin-blue-light.min.css">
 
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
