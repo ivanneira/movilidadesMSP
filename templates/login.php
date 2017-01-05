@@ -30,7 +30,7 @@
                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
-                <input name="txt_pwd" maxlength="32" id="txt_pwd" type="password" class="form-control" placeholder="Clave">
+                <input name="txt_pwd" maxlength="32" id="txt_pwd" type="password" class="form-control" placeholder="Contraseña">
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
             </div>
             <div class="row">
