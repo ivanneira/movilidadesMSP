@@ -22,7 +22,7 @@
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
-        <p class="login-box-msg">Ingrese usuario y contraseña, seba</p>
+        <p class="login-box-msg">Ingrese usuario y contraseña</p>
 
         <form id="frm_login" action="" method="post">
             <div class="form-group has-feedback">
