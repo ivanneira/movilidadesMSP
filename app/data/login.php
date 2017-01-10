@@ -1,4 +1,5 @@
 <?php
+@session_start();
 /**
  * Created by PhpStorm.
  * User: Ivan
@@ -6,31 +7,42 @@
  * Time: 07:45 AM
  */
 
-require_once "../app/data/db.inc.php";
-require_once "../app/data/mysql.php";
+require_once "db.inc.php";
+require_once "mysql.php";
+require_once "user.php";
 
 
-class userLogin {
+class login {
 
     public static function doLogin($usr,$pas){
 
         $db = new MySQL();
 
 
-        $result = $db->consulta("SELECT id FROM test WHERE user = '".$user."' AND password = '".$password."' LIMIT 1");
-        $array = new stdClass();
+        $result = $db->consulta("SELECT id FROM test WHERE user = '".$usr."' AND password = '".$pas."' LIMIT 1");
+        $id = new stdClass();
 
         if($db->num_rows($result)>0) {
 
+
             $row = $db->fetch_array($result);
 
-            $array = $row['id'];
+            $id = $row['id'];
+
+            $result = $db->consulta("SELECT id, user, nombre FROM test WHERE id = ".$id);
+
+            $row = $db->fetch_array($result);
+
+            $usrOBJ = new user($row['id'],$row['user'],$row['nombre']);
+
+
+            $_SESSION['user'] = $usrOBJ;
 
         }else{
-            $array = 0;
+            return 0;
         }
 
-        return $array;
+        return $id;
     }
 
 

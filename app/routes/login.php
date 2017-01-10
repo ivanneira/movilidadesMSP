@@ -1,5 +1,8 @@
 <?php
 
+spl_autoload_register(function ($clase) {
+    include 'clases/' . $clase . '.php';
+});
 
 
 //login
@@ -17,6 +20,6 @@ $app->post('/trylogin/{usr}/{pass}', function( $req,  $response) use($app){
 
 
 
-    return json_encode(userLogin::doLogin($user,$password));
+    return json_encode(login::doLogin($user,$password));
 
 });

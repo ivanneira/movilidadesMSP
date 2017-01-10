@@ -1,3 +1,9 @@
+<?php
+
+  require_once "../app/data/user.php";
+
+?>
+
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -189,19 +195,31 @@ desired effect
               </li>
             </ul>
           </li>
-          <!-- User Account Menu -->
-          <!--<li class="dropdown user user-menu">-->
-          <!--&lt;!&ndash; Menu Toggle Button &ndash;&gt;-->
-          <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown">-->
-          <!--&lt;!&ndash; The user image in the navbar&ndash;&gt;-->
-          <!--<img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">-->
-          <!--&lt;!&ndash; hidden-xs hides the username on small devices so only the image appears. &ndash;&gt;-->
-          <!--<span class="hidden-xs">Alexander Pierce</span>-->
-          <!--</a>-->
-          <!--<ul class="dropdown-menu">-->
-          <!--&lt;!&ndash; The user image in the menu &ndash;&gt;-->
-          <!--<li class="user-header">-->
-          <!--<img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">-->
+<!--           User Account Menu -->
+          <li class="dropdown user user-menu">
+<!--          &lt;!&ndash; Menu Toggle Button &ndash;&gt;-->
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+<!--          &lt;!&ndash; The user image in the navbar&ndash;&gt;-->
+<!--          <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">-->
+<!--          &lt;!&ndash; hidden-xs hides the username on small devices so only the image appears. &ndash;&gt;-->
+          <span class="hidden-xs">
+<!--            nombre de usuario--------------------------------------------------------------------------------------  -->
+            <?php
+
+
+              //var_dump($_SESSION['user']['id']);
+
+            $usuariodemierda = new user (1,2,3);
+
+            var_dump($usuariodemierda->id);
+            ?>
+
+          </span>
+          </a>
+          <ul class="dropdown-menu">
+<!--          &lt;!&ndash; The user image in the menu &ndash;&gt;-->
+          <li class="user-header">
+          <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
           <!--<p>-->
           <!--Alexander Pierce - Web Developer-->
