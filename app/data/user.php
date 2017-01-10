@@ -6,11 +6,12 @@
  * Date: 09/01/2017
  * Time: 08:22 AM
  */
+require_once "mysql.php";
 
 class user
 {
 
-    public $id;
+    public static $id;
     public $user;
     public $name;
 
@@ -21,4 +22,17 @@ class user
         $this->name = $_name;
 
     }
+
+//    function getData(){
+//
+//        $db = new MySQL();
+//
+//        $result = $db->consulta("SELECT id, user, nombre FROM test WHERE id = ".$_SESSION['id']);
+//
+//        $row = $db->fetch_array($result);
+//
+//        $usrOBJ = new user($row['id'],$row['user'],$row['nombre']);
+//
+//        $_SESSION['user'] = $usrOBJ;
+//    }
 }

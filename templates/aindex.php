@@ -1,7 +1,6 @@
 <?php
-
-  require_once "../app/data/user.php";
-
+require_once "../app/routes/login.php";
+require_once "../app/data/user.php";
 ?>
 
 <!DOCTYPE html>
@@ -207,19 +206,20 @@ desired effect
             <?php
 
 
-              //var_dump($_SESSION['user']['id']);
+            var_dump( $_SESSION);
 
-            $usuariodemierda = new user (1,2,3);
+            //para debug
+            session_destroy();
 
-            var_dump($usuariodemierda->id);
+
             ?>
 
           </span>
           </a>
-          <ul class="dropdown-menu">
+<!--          <ul class="dropdown-menu">-->
 <!--          &lt;!&ndash; The user image in the menu &ndash;&gt;-->
-          <li class="user-header">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+<!--          <li class="user-header">-->
+<!--          <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">-->
 
           <!--<p>-->
           <!--Alexander Pierce - Web Developer-->

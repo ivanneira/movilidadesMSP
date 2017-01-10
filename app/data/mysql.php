@@ -1,4 +1,6 @@
-<?php 
+<?php
+require_once "db.inc.php";
+
 
 class MySQL{
 

@@ -1,5 +1,5 @@
 <?php
-@session_start();
+
 /**
  * Created by PhpStorm.
  * User: Ivan
@@ -7,7 +7,6 @@
  * Time: 07:45 AM
  */
 
-require_once "db.inc.php";
 require_once "mysql.php";
 require_once "user.php";
 
@@ -29,20 +28,28 @@ class login {
 
             $id = $row['id'];
 
-            $result = $db->consulta("SELECT id, user, nombre FROM test WHERE id = ".$id);
+//            //segunda consulta para traer valores de usuario
+//
+//            $result = $db->consulta("SELECT id, user, nombre FROM test WHERE id = ".$id);
+//
+//            $row = $db->fetch_array($result);
+//
+//            $usrOBJ = new user($row['id'],$row['user'],$row['nombre']);
+//
+//            $_SESSION['user'] = $usrOBJ;
+            //$_SESSION['id'] = $id;
 
-            $row = $db->fetch_array($result);
+            return $id;
 
-            $usrOBJ = new user($row['id'],$row['user'],$row['nombre']);
-
-
-            $_SESSION['user'] = $usrOBJ;
 
         }else{
+
+            //$_SESSION['id'] = 0;
+
             return 0;
         }
 
-        return $id;
+
     }
 
 

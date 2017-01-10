@@ -1,9 +1,5 @@
 <?php
-
-spl_autoload_register(function ($clase) {
-    include 'clases/' . $clase . '.php';
-});
-
+require '../app/data/user.php';
 
 //login
 $app->get('/login', function($req, $res) use($app){
@@ -18,8 +14,8 @@ $app->post('/trylogin/{usr}/{pass}', function( $req,  $response) use($app){
     $user = $req->getAttribute('usr');
     $password = $req->getAttribute('pass');
 
+    $id = login::doLogin($user,$password);
 
-
-    return json_encode(login::doLogin($user,$password));
+    return $id;
 
 });
