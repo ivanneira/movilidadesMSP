@@ -1,6 +1,11 @@
 <?php
-require_once "../app/routes/login.php";
+//require_once "../app/routes/login.php";
 require_once "../app/data/user.php";
+
+$user = new user($_SESSION['id']);
+
+$user->getData();
+
 ?>
 
 <!DOCTYPE html>
@@ -206,7 +211,7 @@ desired effect
             <?php
 
 
-            var_dump( $_SESSION);
+            print_r($user->name);
 
             //para debug
             session_destroy();

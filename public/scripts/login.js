@@ -13,7 +13,7 @@ $(function () {
                 alert("Nombre de usuario o contraseña incorrecta");
             }else{
 
-                window.location.href = "aindex";
+                window.location = "aindex";
             }
 
         });

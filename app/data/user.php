@@ -11,28 +11,35 @@ require_once "mysql.php";
 class user
 {
 
-    public static $id;
+    public $id;
     public $user;
     public $name;
 
-    function __construct($_id, $_user, $_name){
+    function __construct($_id){
 
         $this->id = $_id;
-        $this->user = $_user;
-        $this->name = $_name;
 
     }
 
-//    function getData(){
-//
-//        $db = new MySQL();
-//
-//        $result = $db->consulta("SELECT id, user, nombre FROM test WHERE id = ".$_SESSION['id']);
-//
-//        $row = $db->fetch_array($result);
-//
-//        $usrOBJ = new user($row['id'],$row['user'],$row['nombre']);
-//
-//        $_SESSION['user'] = $usrOBJ;
-//    }
+    function getData(){
+
+        $db = new MySQL();
+
+        if(isset($_SESSION['id'])) {
+
+            $result = $db->consulta("SELECT id, user, nombre FROM test WHERE id = " . $this->id);
+
+            $row = $db->fetch_array($result);
+
+            $this->user = $row['user'];
+            $this->name = $row['nombre'];
+
+            //$usrOBJ = new user($row['id'], $row['user'], $row['nombre']);
+
+            //$_SESSION['user'] = $usrOBJ;
+        }
+//        else{
+//            $_SESSION['user'] = "error";
+//        }
+    }
 }

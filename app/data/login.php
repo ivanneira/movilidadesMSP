@@ -39,7 +39,7 @@ class login {
 //            $_SESSION['user'] = $usrOBJ;
             //$_SESSION['id'] = $id;
 
-            return $id;
+            //return $id;
 
 
         }else{
