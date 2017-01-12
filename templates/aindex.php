@@ -211,16 +211,21 @@ desired effect
             <?php
 
 
-            print_r($user->name);
+            echo $user->name;
 
             //para debug
-            session_destroy();
+            //session_destroy();
 
 
             ?>
 
           </span>
           </a>
+            <ul class="dropdown-menu">
+              <li class="user-body">
+                <a href="#" >Terminar sesión</a>
+              </li>
+            </ul>
 <!--          <ul class="dropdown-menu">-->
 <!--          &lt;!&ndash; The user image in the menu &ndash;&gt;-->
 <!--          <li class="user-header">-->

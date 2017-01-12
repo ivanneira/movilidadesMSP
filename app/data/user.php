@@ -34,12 +34,7 @@ class user
             $this->user = $row['Email'];
             $this->name = $row['Nombre'];
 
-            //$usrOBJ = new user($row['id'], $row['user'], $row['nombre']);
-
-            //$_SESSION['user'] = $usrOBJ;
         }
-//        else{
-//            $_SESSION['user'] = "error";
-//        }
+
     }
 }
