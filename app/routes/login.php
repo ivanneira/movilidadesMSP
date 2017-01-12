@@ -1,6 +1,8 @@
 <?php
 require '../app/data/user.php';
-require_once "../app/data/mysql.php";
+require_once "../app/data/db.inc.php";
+require_once "../app/data/class.conexion.php";
+
 //login
 $app->get('/login', function($req, $res) use($app){
 

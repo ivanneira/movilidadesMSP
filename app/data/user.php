@@ -6,7 +6,8 @@
  * Date: 09/01/2017
  * Time: 08:22 AM
  */
-require_once "mysql.php";
+
+require_once "class.conexion.php";
 
 class user
 {

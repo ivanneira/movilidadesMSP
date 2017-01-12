@@ -1,10 +1,27 @@
 <?php
 //require_once "../app/routes/login.php";
 require_once "../app/data/user.php";
+require_once "../app/data/class.permisos.php";
+require_once "../app/data/class.generamenu.php";
 
 $user = new user($_SESSION['id']);
-
 $user->getData();
+
+$obj_permiso = new Permiso();
+$permiso = $obj_permiso->validarPermiso($user->id,6);
+
+if( $permiso->agregar == 1){
+    echo 'Tiene permisos';
+}
+else
+{
+    echo 'No Tiene permisos';
+}
+$obj_permiso->desconectar();
+
+
+
+
 
 ?>
 
@@ -87,6 +104,8 @@ desired effect
       <!-- Navbar Right Menu -->
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
+
+
           <!-- Messages: style can be found in dropdown.less-->
           <!--<li class="dropdown messages-menu">-->
           <!--&lt;!&ndash; Menu toggle button &ndash;&gt;-->
@@ -301,42 +320,12 @@ desired effect
       <!-- /.search form -->
 
       <!-- Sidebar Menu -->
-      <ul class="sidebar-menu">
-        <li class="header">Menu</li>
-        <!-- Optionally, you can add icons to the links -->
-
-        <!--LOCALIZACION-->
-        <li class="treeview">
-          <a href="#"><i class="fa fa-map-marker"></i> <span>Localización</span>
-            <span class="pull-right-container">
-                 <i class="fa fa-angle-left pull-right"></i>
-                </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="#">Posición actual</a></li>
-            <li><a href="#">Historial por vehículo</a></li>
-          </ul>
-        </li>
-
-
-        <!--ESTADISTICAS-->
-        <li><a href="#"><i class="fa fa-pie-chart"></i> <span>Estadísticas</span></a></li>
-        <!--MOVILES-->
-        <li class="treeview">
-          <a href="#"><i class="fa fa-car"></i> <span>Móviles</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="#">Registros (ABM)</a></li>
-            <li><a href="#">Documentaciones (ABM)</a></li>
-            <li><a href="#">Mantenimientos (ABM)</a></li>
-          </ul>
-        </li>
-        <!--CONDUCTORES-->
-        <li><a href="#"><i class="fa fa-user"></i> <span>Conductores</span></a></li>
-      </ul>
+        <?php
+        /*Genero Menu Segun usuario*/
+        $obj_menu = new Menu();
+        $obj_menu->GeneraMenu(0,1,$user->id);
+        $obj_menu->desconectar();
+        ?>
       <!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->
