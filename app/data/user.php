@@ -27,12 +27,12 @@ class user
 
         if(isset($_SESSION['id'])) {
 
-            $result = $db->consulta("SELECT id, user, nombre FROM test WHERE id = " . $this->id);
+            $result = $db->consulta("SELECT UsuarioID, Email, Nombre FROM Tbl_Usuarios WHERE UsuarioID = " . $this->id);
 
             $row = $db->fetch_array($result);
 
-            $this->user = $row['user'];
-            $this->name = $row['nombre'];
+            $this->user = $row['Email'];
+            $this->name = $row['Nombre'];
 
             //$usrOBJ = new user($row['id'], $row['user'], $row['nombre']);
 

@@ -16,31 +16,21 @@ $app->post('/trylogin/{usr}/{pass}', function( $req,  $response) use($app){
     $db = new MySQL();
 
 
-    $result = $db->consulta("SELECT id FROM test WHERE user = '".$user."' AND password = '".$password."' LIMIT 1");
+    $result = $db->consulta("SELECT UsuarioID FROM Tbl_Usuarios WHERE Email = '".$user."' AND Password = '".$password."' LIMIT 1");
     $id = new stdClass();
 
     if($db->num_rows($result)>0) {
 
-
         $row = $db->fetch_array($result);
 
-        $id = $row['id'];
+        $id = $row['UsuarioID'];
 
         $_SESSION['id'] = $id;
 
-        //return $id;
-
-
     }else{
-
-        //$_SESSION['id'] = 0;
 
         $id = 0;
     }
-
-    //$id = login::doLogin($user,$password);
-
-    //$_SESSION['id'] = $id;
 
     return $id;
 

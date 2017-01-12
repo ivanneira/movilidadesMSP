@@ -8,7 +8,6 @@ $(function () {
             global: true
 
         }).done(function(data) {
-
             if(data == 0){
                 alert("Nombre de usuario o contraseña incorrecta");
             }else{

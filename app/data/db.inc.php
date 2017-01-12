@@ -1,6 +1,6 @@
 <?php
 
-define ('DATABASE_NAME' , 'test');
+define ('DATABASE_NAME' , 'Movilidades');
 
 define ('DATABASE_HOST', '192.168.3.106');
 
