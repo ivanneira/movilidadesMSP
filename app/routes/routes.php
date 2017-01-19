@@ -51,11 +51,14 @@ $app->get('/abm_getPermisos', function($req, $res) use($app){
     return getDatos();
 });
 
-//$app->post('/abm_getPermisos', function($req, $res) use($app){
-//
-//    require_once "../app/controllers/abm_getPermisosController.php";
-//
-//    return saveDato();
-//});
+//Guarda datos la grilla
+$app->post('/abm_getPermisos', function($req, $res) use($app){
+
+    require_once "../app/controllers/abm_getPermisosController.php";
+    return saveDatos();
+
+});
+
+
 
 

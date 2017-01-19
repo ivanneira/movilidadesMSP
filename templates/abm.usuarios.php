@@ -30,14 +30,14 @@
             {delete: "true",text:"Eliminar"}];
 
         var colheaders = [
-            {index : "RecursoID", name: "id", editable: "true",  visible: "true", type: "text",placeholder:"", maxlength: "10", required: "false" },
+            {index : "RecursoID", name: "id", editable: "true",  visible: "false", type: "text",placeholder:"", maxlength: "10", required: "false" },
             {index : "apellido", name: "Apellido",editable: "true", visible: "true", type: "text", maxlength: "10", required: "false" },
             {index : "nombre", name: "Nombre",editable: "true", visible: "true", type: "text", maxlength: "10", required: "true"},
             {index : "otro", name: "Otro",editable: "true", visible: "true", type: "text", maxlength: "10", required: "true"}];
 
 
         var edit_options ={	url: "edit.php",titulo: "Editar",method : "UPDATE" };
-        var add_options ={ url: "crud/add.php",titulo: "Agregar",method : "POST" };
+        var add_options ={ url: "abm_getPermisos",titulo: "Agregar",method : "POST" };
         var del_options ={ url: "del.php",titulo: "Eliminar",method : "POST"};
 
         var datasource ={

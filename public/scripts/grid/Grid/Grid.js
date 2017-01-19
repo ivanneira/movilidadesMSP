@@ -62,7 +62,8 @@ function loadScript(url, callback)
     					{
     						case 0: /*Agregar*/
     						{
-    							
+
+    							console.dir($("#"+form))
     							$.ajax({
 	                        		type: obj.add_options.method,
 			                        data: $("#"+form).serialize(),
@@ -70,9 +71,20 @@ function loadScript(url, callback)
 									global:true,
                                     cache:false,
 			                        timeout: obj.timeout,
+                                    dataType: "json",
 			                        success: function(data) 
 			                        {
-										//console.dir(data)                            
+										console.dir(data)
+                                        if(data.estado == "true")
+                                        {
+                                            var id = $(obj).attr("id");
+                                            $("#"+id+"_CrudModal .close").click();
+                                            methods.getDatos(obj,1,methods.doTable);
+                                        }
+                                        else
+                                        {
+                                            alert(data.mensaje);
+                                        }
 										ret = data;
 										
 	                        		},
@@ -452,19 +464,19 @@ function loadScript(url, callback)
 		                                            {
 		                                                case "text":
 		                                                {
-		                                                    var required =  (obj.Columnas[i].required == "true") ? 'required' : '';
-		                                                    if(typeof(obj.Columnas[i].placeholder) == 'undefined')
-		                                                    {
-		                                                    	placeholder= "";
-		                                                    }
-		                                                    else
-		                                                    {
-		                                                    	placeholder = obj.Columnas[i].placeholder;
-		                                                    }
-		                                                 html += "<div class='form-group'>"
-		                                                 html += "  <label for='"+id+"_field_"+i+"'>"+obj.Columnas[i].name+":</label>"
-		                                                 html += "  <input type='"+obj.Columnas[i].type+"' class='form-control' value='' name='"+id+"_field_"+obj.Columnas[i].index+"' id='"+id+"_field_"+obj.Columnas[i].index+"' placeholder='"+placeholder+"' style='"+obj.Columnas[i].style+"' maxlength='"+obj.Columnas[i].maxlength+"' " + required +" >"
-		                                                 html += "</div>"
+                                                            if(obj.Columnas[i].editable =="true") {
+                                                                var required = (obj.Columnas[i].required == "true") ? 'required' : '';
+                                                                if (typeof(obj.Columnas[i].placeholder) == 'undefined') {
+                                                                    placeholder = "";
+                                                                }
+                                                                else {
+                                                                    placeholder = obj.Columnas[i].placeholder;
+                                                                }
+                                                                html += "<div class='form-group'>"
+                                                                html += "  <label for='" + id + "_field_" + i + "'>" + obj.Columnas[i].name + ":</label>"
+                                                                html += "  <input type='" + obj.Columnas[i].type + "' class='form-control' value='' name='" + id + "_field_" + obj.Columnas[i].index + "' id='" + id + "_field_" + obj.Columnas[i].index + "' placeholder='" + placeholder + "' style='" + obj.Columnas[i].style + "' maxlength='" + obj.Columnas[i].maxlength + "' " + required + " >"
+                                                                html += "</div>"
+                                                            }
 		                                                }break;
 		                                            }
 		                                        }

@@ -10,6 +10,41 @@
 
 require_once "../app/data/class.conexion.php";
 
+function saveDatos()
+{
+    $db = new MySQL();
+    //print_r( $_POST);
+
+    $a = $_POST['table_field_apellido'];
+    $b = $_POST['table_field_nombre'];
+    $c = $_POST['table_field_otro'];
+    $d = $_POST['table_field_RecursoID'];
+
+    $result = $db->consulta("insert into Tbl_Recursos (RecursoID,Nombre, Link, Orden) values ('$d','$a','$b','$c')");
+
+
+    $mensaje = "No pudo guardar.";
+    $estado = "false";
+
+    if(!$result)
+    {
+        $mensaje = "Procesado correctamente.";
+        $estado = "true";
+    }
+    else
+    {
+        $mensaje = "Error: ".$result;
+    }
+
+    $response = array(
+        'mensaje' => $mensaje,
+        'estado' => $estado,
+    );
+
+    echo json_encode($response);
+}
+
+
 function getDatos()
 {
 

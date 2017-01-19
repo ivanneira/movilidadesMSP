@@ -31,6 +31,7 @@ class MySQL {
     */
     public function Consulta($sql){
        $this->consulta =  mysqli_query($this->conexion,$sql);
+        return mysqli_error($this->conexion);
     }
 
     /**
