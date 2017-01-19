@@ -9,6 +9,13 @@ PATCH: Para editar partes concretas de un recurso.
 
 include ("login.php");
 
+//Para deploy
+$app->get('/deploy', function($req, $res, $args) use($app) {
+
+    return $this->renderer->render($res, 'deploy.php');
+
+});
+
 
 //engancha todos
 $app->get('/', function($req, $res, $args) use($app) {
