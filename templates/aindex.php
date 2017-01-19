@@ -730,6 +730,7 @@ desired effect
 <!--</style>-->
 
 <script src="scripts/aindex.js"></script>
+<script src="scripts/modal.js"></script>
 
 </body>
 
