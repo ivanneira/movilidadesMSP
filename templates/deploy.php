@@ -11,7 +11,7 @@
 <body>
 <p>SUPER MEGA HIPER DEPLOY SYSTEM QUE ES MUCHO MEJOR QUE .NET</p>
 <p id="status">
-    <?php $return_var= ''; passthru('git pull',$return_var); print_r( json_encode($return_var) ); ?>
+    <?php $return_var= ''; passthru('git',$return_var); print_r( json_encode($return_var) ); ?>
 </p>
 
 </body>
