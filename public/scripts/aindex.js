@@ -2,13 +2,13 @@
  * Created by Ivan on 12/01/2017.
  */
 
-   function loadPage(){
-
+   function loadPage(routes){
 
         $.ajax({
-            url: "abm_usuarios",
+            url: routes,
             type: "GET",
-            global: true
+            global: true,
+            cache:false,
 
         }).done(function(data) {
 

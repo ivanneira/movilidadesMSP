@@ -10,7 +10,6 @@
 
 </head>
 <body>
-
 <div id="table"  class="container"></div>
 
 </body>
@@ -52,7 +51,7 @@
 
         var x = $('#table').Grid({  // calls the init method
 
-            Titulo : 'Administrar Usuarios',
+            Titulo : 'Administrar Permisos',
             ABM: Options,
             Columnas: colheaders,
             edit_options : edit_options,
@@ -78,5 +77,6 @@
  * Date: 13/01/2017
  * Time: 08:12 AM
  */
+
 
 

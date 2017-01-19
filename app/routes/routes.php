@@ -25,10 +25,22 @@ $app->get('/aindex', function($req, $res) use($app){
 //ABM usuarios (retorna vista)
 $app->get('/abm_usuarios', function($req, $res) use($app){
 
-
-
     return $this->renderer->render($res, 'abm.usuarios.php');
 });
 
-//ABM usuarios: inserta nuevo
+
+//ABM Permisos (retorna vista)
+$app->get('/abm_permisos', function($req, $res) use($app){
+
+    return $this->renderer->render($res, 'abm.permisos.php');
+});
+
+
+$app->get('/abm_getPermisos', function($req, $res) use($app){
+
+    return $this->renderer->render($res, 'abm.permisos.php');
+});
+
+
+
 
