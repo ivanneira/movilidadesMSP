@@ -14,12 +14,5 @@
     <?php $return_var= ''; passthru('git pull',$return_var); print_r( json_encode($return_var) ); ?>
 </p>
 
-
-<script>
-    $(function () {
-
-
-    });
-</script>
 </body>
 </html>
