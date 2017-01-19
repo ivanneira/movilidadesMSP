@@ -23,7 +23,7 @@
         }
     }
     // Print the exec output inside of a pre element
-    print("<pre>" . execPrint("git pull") . "</pre>");
+    execPrint("git pull /var/www/html/movilidadesMSP/");
 
     ?>
 </p>
