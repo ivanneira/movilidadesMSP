@@ -30,7 +30,7 @@
             {delete: "true",text:"Eliminar"}];
 
         var colheaders = [
-            {index : "id", name: "id", editable: "true",  visible: "true", type: "text",placeholder:"", maxlength: "10", required: "false" },
+            {index : "RecursoID", name: "id", editable: "true",  visible: "true", type: "text",placeholder:"", maxlength: "10", required: "false" },
             {index : "apellido", name: "Apellido",editable: "true", visible: "true", type: "text", maxlength: "10", required: "false" },
             {index : "nombre", name: "Nombre",editable: "true", visible: "true", type: "text", maxlength: "10", required: "true"},
             {index : "otro", name: "Otro",editable: "true", visible: "true", type: "text", maxlength: "10", required: "true"}];
@@ -41,8 +41,8 @@
         var del_options ={ url: "del.php",titulo: "Eliminar",method : "POST"};
 
         var datasource ={
-            url: "../templates/crud/list.php",
-            method : "POST",
+            url: "abm_getPermisos",
+            method : "GET",
             datatype: "json",
             pagesize: 10,
             paginate: "false",

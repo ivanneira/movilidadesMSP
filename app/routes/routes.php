@@ -35,12 +35,19 @@ $app->get('/abm_permisos', function($req, $res) use($app){
     return $this->renderer->render($res, 'abm.permisos.php');
 });
 
-
+//Rellena la grilla
 $app->get('/abm_getPermisos', function($req, $res) use($app){
 
-    return $this->renderer->render($res, 'abm.permisos.php');
+    require_once "../app/controllers/abm_getPermisosController.php";
+
+    return getDatos();
 });
 
-
+//$app->post('/abm_getPermisos', function($req, $res) use($app){
+//
+//    require_once "../app/controllers/abm_getPermisosController.php";
+//
+//    return saveDato();
+//});
 
 
