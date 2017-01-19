@@ -22,7 +22,7 @@
             print($line . "\n");
         }
     }
-    // Print the exec output inside of a pre element
+
     execPrint("git pull /var/www/html/movilidadesMSP/");
 
     ?>
