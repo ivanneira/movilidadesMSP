@@ -1,4 +1,12 @@
 <?php
+/****
+GET: Para consultar y leer recursos
+POST: Para crear recursos
+PUT: Para editar recursos
+DELETE: Para eliminar recursos.
+PATCH: Para editar partes concretas de un recurso.
+****/
+
 include ("login.php");
 
 
