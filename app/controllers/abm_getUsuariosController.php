@@ -10,6 +10,43 @@
 
 require_once "../app/data/class.conexion.php";
 
+
+
+
+//Elimina registros a partir del modal
+function delDatos()
+{
+    echo 'Hola';
+    //print_r($_SERVER['REQUEST_METHOD']);
+    print_r($_POST);
+
+    /*
+    $db = new MySQL();
+    $a = $_POST['table_field_RecursoID'];
+    $result = $db->consulta("delete from Tbl_Recursos where RecursoID = '$a'");
+    $mensaje = "No pudo Eliminar.";
+    $estado = "false";
+
+    if(!$result)
+    {
+        $mensaje = "Procesado correctamente.";
+        $estado = "true";
+    }
+    else
+    {
+        $mensaje = "Error: ".$result;
+    }
+
+    $response = array(
+        'mensaje' => $mensaje,
+        'estado' => $estado,
+    );
+
+    echo json_encode($response);
+    */
+}
+
+//Guarda registros a partir del modal
 function saveDatos()
 {
     $db = new MySQL();
@@ -44,7 +81,7 @@ function saveDatos()
     echo json_encode($response);
 }
 
-
+//Carga registros en la grilla
 function getDatos()
 {
 

@@ -62,8 +62,6 @@ function loadScript(url, callback)
     					{
     						case 0: /*Agregar*/
     						{
-
-    							console.dir($("#"+form))
     							$.ajax({
 	                        		type: obj.add_options.method,
 			                        data: $("#"+form).serialize(),
@@ -113,6 +111,7 @@ function loadScript(url, callback)
 									global:true,
                                     cache:false,
 			                        timeout: obj.timeout,
+                                    dataType: "json",
 			                        success: function(data) 
 			                        {
 										ret = data;
@@ -135,15 +134,27 @@ function loadScript(url, callback)
 							case 2: /*Eliminar*/
     						{
 								$.ajax({
-	                        		type: obj.method,
+	                        		type: "POST",//obj.del_options.method,
 			                        data: $(form).serialize(),
 			                        url: obj.del_options.url,
 			                        timeout: obj.timeout,
 									global:true,
                                     cache:false,
+                                    dataType: "json",
 			                        success: function(data) 
 			                        {
-										ret = data;
+                                        console.dir(data)
+                                        if(data.estado == "true")
+                                        {
+                                            var id = $(obj).attr("id");
+                                            $("#"+id+"_CrudModal .close").click();
+                                            methods.getDatos(obj,1,methods.doTable);
+                                        }
+                                        else
+                                        {
+                                            alert(data.mensaje);
+                                        }
+                                        ret = data;
 	                        		},
 	                        		error: function(xhr, resp, text) 
 	                        		{
@@ -581,7 +592,7 @@ function loadScript(url, callback)
 			                                        html += '<h4>'+obj.del_options.titulo+'</h4>'
 			                                        html += '</div>';
 			                                        html += '<div class="modal-body">';
-			                                        html += '<form id="'+id+'_form">';
+			                                        html += '<form id="'+id+'_form" action="#" method="delete">';
 			                                        /****/
 
 			                                        for(i=0;i<obj.Columnas.length;i++)
@@ -598,6 +609,11 @@ function loadScript(url, callback)
 					                                                html += "  <label for='"+id+"_field_"+i+"'>"+obj.Columnas[i].name+":</label>"
 					                                                html += "  <input readonly type='"+obj.Columnas[i].type+"' class='form-control' id='"+id+"_field_"+i+"' style='"+obj.Columnas[i].style+"' maxlength='"+obj.Columnas[i].maxlength+"' " + required +" >"
 					                                                html += "</div>"
+
+                                                                    html += "<div class='form-group'>"
+                                                                    html += "  <label for='" + id + "_field_" + i + "'>" + obj.Columnas[i].name + ":</label>"
+                                                                    html += "  <input readonly type='" + obj.Columnas[i].type + "' class='form-control' value='' name='" + id + "_field_" + obj.Columnas[i].index + "' id='" + id + "_field_" + obj.Columnas[i].index + "'  style='" + obj.Columnas[i].style + "' maxlength='" + obj.Columnas[i].maxlength + "' " + required + " >"
+                                                                    html += "</div>"
 				                                            	}
 			                                                }break;
 			                                            }

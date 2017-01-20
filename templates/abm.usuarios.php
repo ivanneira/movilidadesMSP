@@ -38,7 +38,7 @@
 
         var edit_options ={	url: "edit.php",titulo: "Editar",method : "UPDATE" };
         var add_options ={ url: "abm_getUsuarios",titulo: "Agregar",method : "POST" };
-        var del_options ={ url: "del.php",titulo: "Eliminar",method : "POST"};
+        var del_options ={ url: "abm_getUsuarios",titulo: "Eliminar",method : "DELETE"};
 
         var datasource ={
             url: "abm_getUsuarios",
