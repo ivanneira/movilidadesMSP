@@ -15,7 +15,7 @@
 <?php
     require_once('..\app\Git.php');
 
-    $repo = Git::open('/var/www/html/movilidadesMSP/');
+    $repo = Git::open('/var/www/html/movilidadesMSP');
 
     echo $repo->pull();
 
