@@ -9,7 +9,7 @@
     <script src="../public/scripts/jquery-3.1.1.min.js"></script>
 </head>
 <body>
-<p>SUPER MEGA HIPER DEPLOY SYSTEM QUE ES MUCHO MEJOR QUE .NET, YEAH! </p>
+<p>SUPER MEGA HIPER DEPLOY SYSTEM QUE ES MUCHO MEJOR QUE .NET, YEAH </p>
 <p id="status">
 
 <?php
