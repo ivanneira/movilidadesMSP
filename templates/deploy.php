@@ -6,26 +6,21 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>SUPER MEGA HIPER DEPLOY SYSTEM QUE ES MUCHO MEJOR QUE .NET</title>
-    <script src="scripts/jquery-3.1.1.min.js"></script>
+    <script src="../public/scripts/jquery-3.1.1.min.js"></script>
 </head>
 <body>
 <p>SUPER MEGA HIPER DEPLOY SYSTEM QUE ES MUCHO MEJOR QUE .NET </p>
 <p id="status">
-    <?php
 
-    //$return_var= ''; passthru('git',$return_var); print_r( json_encode($return_var) );
+<?php
+    require_once('..\app\Git.php');
 
-    function execPrint($command) {
-        $result = array();
-        exec($command, $result);
-        foreach ($result as $line) {
-            print($line . "\n");
-        }
-    }
+    $repo = Git::open('/var/www/html/movilidadesMSP/');
 
-    execPrint("git pull /var/www/html/movilidadesMSP/");
+    echo $repo->pull();
 
-    ?>
+
+?>
 </p>
 
 </body>
