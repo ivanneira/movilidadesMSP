@@ -44,21 +44,29 @@ $app->get('/abm_permisos', function($req, $res) use($app){
 });
 
 //Rellena la grilla
-$app->get('/abm_getPermisos', function($req, $res) use($app){
+$app->get('/abm_getUsuarios', function($req, $res) use($app){
 
-    require_once "../app/controllers/abm_getPermisosController.php";
+    require_once "../app/controllers/abm_getUsuariosController.php";
 
     return getDatos();
 });
 
 //Guarda datos la grilla
-$app->post('/abm_getPermisos', function($req, $res) use($app){
+$app->post('/abm_getUsuarios', function($req, $res) use($app){
 
-    require_once "../app/controllers/abm_getPermisosController.php";
+    require_once "../app/controllers/abm_getUsuariosController.php";
     return saveDatos();
 
 });
 
+
+//Elimina datos de la grilla
+$app->delete('/abm_getUsuarios', function($req, $res) use($app){
+
+    require_once "../app/controllers/abm_getUsuariosController.php";
+    return delDatos();
+
+});
 
 
 

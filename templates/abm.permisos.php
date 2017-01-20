@@ -10,7 +10,7 @@
 
 </head>
 <body>
-<div id="table"  class="container"></div>
+<div id="table"  ></div>
 
 </body>
 </html>
@@ -43,7 +43,7 @@
             url: "../templates/crud/list.php",
             method : "POST",
             datatype: "json",
-            pagesize: 10,
+            pagesize: 100,
             paginate: "false",
             fixedrows: "7"
         };

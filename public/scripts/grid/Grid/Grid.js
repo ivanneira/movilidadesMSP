@@ -115,12 +115,10 @@ function loadScript(url, callback)
 			                        timeout: obj.timeout,
 			                        success: function(data) 
 			                        {
-										//console.dir(data)
-										ret = data;                            
+										ret = data;
 	                        		},
 	                        		error: function(xhr, resp, text) 
 	                        		{
-              
 						              if(resp === "timeout")
 						              {
 						                alert("Se ha superado el tiempo de peticion");
@@ -145,13 +143,10 @@ function loadScript(url, callback)
                                     cache:false,
 			                        success: function(data) 
 			                        {
-										//console.dir(data)
-										ret = data;                            
-										
+										ret = data;
 	                        		},
 	                        		error: function(xhr, resp, text) 
 	                        		{
-              
 						              if(resp === "timeout")
 						              {
 						                alert("Se ha superado el tiempo de peticion");
@@ -164,7 +159,6 @@ function loadScript(url, callback)
 						          }
                     			});
     						}break; 
-
     					}
     					return ret;
     				},
@@ -182,7 +176,6 @@ function loadScript(url, callback)
 
 					getDatos : function (obj,page,callback)
     				{
-    					
 						$body = $("body");
     					var id = $(obj).attr("id");
     					
@@ -222,7 +215,6 @@ function loadScript(url, callback)
 						          }
                     			});
     				},
-
     				wanimate : function (div)
     				{
 					    var open = $("#"+div).attr('data-easein');
@@ -242,23 +234,17 @@ function loadScript(url, callback)
 					      $("#"+div).find('.modal-dialog').velocity('transition.' + open);
 					    }
 					},
-
     				rowClick: function (id, Columnas)
     				{
-
     						var tmp = [];
     						for (i=0; i<$("#"+id).find('.highlight td').length; i++)
     						{
     							tmp[i] = $("#"+id).find( ".highlight").find('td').eq(i).text();
     						}
-    						
     						return tmp;
     				},
-
-                    doTable : function(obj,dataset) 
+                    doTable : function(obj,dataset)
                               {
-
-                              		
                                     var id = $(obj).attr("id");
 									
                                     var html = "<table id='"+id+"_table' class='table table-striped'><thead>"
@@ -270,11 +256,11 @@ function loadScript(url, callback)
                                         	{
                                         		if(obj.Columnas[i].index == criteria && criteria_flag==true)
                                         		{
-													html += "<th id="+id+"_header_"+obj.Columnas[i].index+"><img src='scripts/grid/Grid/inc/img/sort_desc.jpg'>"+obj.Columnas[i].name+"</th>";
+													html += "<th id="+id+"_header_"+obj.Columnas[i].index+"><img src='scripts/grid/Grid/inc/img/sort_desc.png'>"+obj.Columnas[i].name+"</th>";
                                         		}
                                         		else
                                         		{
-                                            		html += "<th id="+id+"_header_"+obj.Columnas[i].index+"><img src='scripts/grid/Grid/inc/img/sort_asc.jpg'>"+obj.Columnas[i].name+"</th>";
+                                            		html += "<th id="+id+"_header_"+obj.Columnas[i].index+"><img src='scripts/grid/Grid/inc/img/sort_asc.png'>"+obj.Columnas[i].name+"</th>";
                                             	}
                                         	}
                                         	else
@@ -282,7 +268,7 @@ function loadScript(url, callback)
                                         		html += "<th style=\"display:none\" >"+obj.Columnas[i].name+"</th>";	
                                         	}
                                         }
-										
+
 										html +="</tr>"
                                         html +="</thead>"
                                         html +="<tbody>"
@@ -327,7 +313,10 @@ function loadScript(url, callback)
 	                                        	html+="<tr class='empty_td'>"
 	                                        	for(i=0;i<obj.Columnas.length;i++)
 		                                        {
-	                                        		html+="<td>&nbsp;</td>"
+                                                    if(obj.Columnas[i].visible == "true")
+                                                    {
+                                                        html += "<td>&nbsp;</td>"
+                                                    }
 	                                        	}
 	                                        	html+="</tr>"		
 	                                        }

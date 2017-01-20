@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<div id="table"  class="container"></div>
+<div id="table" ></div>
 
 </body>
 </html>
@@ -37,16 +37,16 @@
 
 
         var edit_options ={	url: "edit.php",titulo: "Editar",method : "UPDATE" };
-        var add_options ={ url: "abm_getPermisos",titulo: "Agregar",method : "POST" };
+        var add_options ={ url: "abm_getUsuarios",titulo: "Agregar",method : "POST" };
         var del_options ={ url: "del.php",titulo: "Eliminar",method : "POST"};
 
         var datasource ={
-            url: "abm_getPermisos",
+            url: "abm_getUsuarios",
             method : "GET",
             datatype: "json",
             pagesize: 10,
             paginate: "false",
-            fixedrows: "7"
+            fixedrows: "12"
         };
 
 
