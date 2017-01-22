@@ -59,6 +59,7 @@ function loadScript(url, callback)
     				ajaxFnc : function (form,obj, accion)
     				{
     					var ret;
+                        var id = $(obj).attr("id");
     					switch(accion)
     					{
     						case 0: /*Agregar*/
@@ -73,16 +74,21 @@ function loadScript(url, callback)
                                     dataType: "json",
 			                        success: function(data) 
 			                        {
-										console.dir(data)
                                         if(data.estado == "true")
                                         {
-                                            var id = $(obj).attr("id");
+
+                                            $("#"+id+"_CrudModal").find("#resulttxt").addClass("alert alert-success");
+                                            $("#"+id+"_CrudModal").find("#resulttxt").html("<strong>"+data.mensaje+"</strong>");
+                                            $("#"+id+"_CrudModal").find("#resulttxt").show();
+                                            setTimeout(function() {
                                             $("#"+id+"_CrudModal .close").click();
-                                            methods.getDatos(obj,1,methods.doTable);
+                                            methods.getDatos(obj,1,methods.doTable);},1000);
                                         }
                                         else
                                         {
-                                            alert(data.mensaje);
+                                            $("#"+id+"_CrudModal").find("#resulttxt").addClass("alert alert-danger");
+                                            $("#"+id+"_CrudModal").find("#resulttxt").html("<strong>"+data.mensaje+"</strong>");
+                                            $("#"+id+"_CrudModal").find("#resulttxt").show();
                                         }
 										ret = data;
 										
@@ -116,6 +122,22 @@ function loadScript(url, callback)
 			                        success: function(data) 
 			                        {
 										ret = data;
+                                        if(data.estado == "true")
+                                        {
+
+                                            $("#"+id+"_CrudModal").find("#resulttxt").addClass("alert alert-success");
+                                            $("#"+id+"_CrudModal").find("#resulttxt").html("<strong>"+data.mensaje+"</strong>");
+                                            $("#"+id+"_CrudModal").find("#resulttxt").show();
+                                            setTimeout(function() {
+                                                $("#"+id+"_CrudModal .close").click();
+                                                methods.getDatos(obj,1,methods.doTable);},1000);
+                                        }
+                                        else
+                                        {
+                                            $("#"+id+"_CrudModal").find("#resulttxt").addClass("alert alert-danger");
+                                            $("#"+id+"_CrudModal").find("#resulttxt").html("<strong>"+data.mensaje+"</strong>");
+                                            $("#"+id+"_CrudModal").find("#resulttxt").show();
+                                        }
 	                        		},
 	                        		error: function(xhr, resp, text) 
 	                        		{
@@ -144,16 +166,21 @@ function loadScript(url, callback)
 									dataType: "json",
 			                        success: function(data) 
 			                        {
-                                        console.dir(data)
                                         if(data.estado == "true")
                                         {
-                                            var id = $(obj).attr("id");
-                                            $("#"+id+"_CrudModal .close").click();
-                                            methods.getDatos(obj,1,methods.doTable);
+
+                                            $("#"+id+"_CrudModal").find("#resulttxt").addClass("alert alert-success");
+                                            $("#"+id+"_CrudModal").find("#resulttxt").html("<strong>"+data.mensaje+"</strong>");
+                                            $("#"+id+"_CrudModal").find("#resulttxt").show();
+                                            setTimeout(function() {
+                                                $("#"+id+"_CrudModal .close").click();
+                                                methods.getDatos(obj,1,methods.doTable);},1000);
                                         }
                                         else
                                         {
-                                            alert(data.mensaje);
+                                            $("#"+id+"_CrudModal").find("#resulttxt").addClass("alert alert-danger");
+                                            $("#"+id+"_CrudModal").find("#resulttxt").html("<strong>"+data.mensaje+"</strong>");
+                                            $("#"+id+"_CrudModal").find("#resulttxt").show();
                                         }
                                         ret = data;
 	                        		},
@@ -438,23 +465,6 @@ function loadScript(url, callback)
 											{
 												wnd=true;
 
-												var html2 = ''
-												html2 += 	'<div id="myModal2"  data-easein="flipBounceYIn" tabindex="-1" data-keyboard="false" data-backdrop="static"  role="dialog"'
-												html2 +=	'aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">'
-												html2 +=	'<div class="modal-dialog" style="opacity: 1; display: block;">';
-												html2 +=	'<div class="modal-content">';
-												html2 +=    '<div class="modal-header">';
-												html2 += 	'<a class="close" data-dismiss="modal">×</a>';
-												html2 += 	'<h4>titulo</h4>';
-												html2 += 	'</div>';
-												html2 += 	'<div class="modal-body">';
-												html2 +=	'</div>';
-												html2 +=	'</div>';
-												html2 +=	'</div>';
-												html2 +=	'</div>';
-
-
-
 												var html =  '<div id="'+id+'_CrudModal" class="modal"  data-easein="flipBounceYIn" tabindex="-1" data-keyboard="false" data-backdrop="static"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">';
 
 		                                        html += '<div class="modal-dialog">';
@@ -462,6 +472,7 @@ function loadScript(url, callback)
 		                                        html += '<div class="modal-header">';
 		                                        html += '<a class="close" data-dismiss="modal">×</a>';
 		                                        html += '<h4>'+obj.add_options.titulo+'</h4>'
+												html += '<div id="resulttxt" name="resulttxt"  style="display:none;text-align:center"></div>'
 		                                        html += '</div>';
 		                                        html += '<div class="modal-body">';
 		                                        html += '<form id="'+id+'_form" action="#" method="post">';
@@ -501,28 +512,8 @@ function loadScript(url, callback)
 		                                        html += '</div>';  // dialog
 		                                        html += '</div>';  // footer
 		                                        html += '</div>';  // modalWindow
-		                                        $('body').prepend(html);
-												$('body').prepend(html2);
-		                                        /*
-		                                        var data = methods.rowClick("table");
-                                        		for(i=0;i<data.length;i++)
-                                        		{
-                                        			$("#"+id+"_field_"+i).val(data[i]);
-                                        		}
-												*/
-		                                        $("#btnTest").click(function(){
-		                                        	//$('#myModal2').find('.modal-body').modal('show');
-													methods.wanimate("myModal2");
-													$("#myModal2").modal();
-													$("#myModal2").modal('show');
-													console.log("second modal")
+		                                        $('body').append(html);
 
-													$('.modal').on('hidden.bs.modal', function (e) {
-														if($('.modal').hasClass('in')) {
-															$('body').addClass('modal-open');
-														}
-													});
-												})
 
                                         		$("#btnGuardar").click(function(){
 
@@ -547,6 +538,7 @@ function loadScript(url, callback)
 			                                        html += '<div class="modal-header">';
 			                                        html += '<a class="close" data-dismiss="modal">×</a>';
 			                                        html += '<h4>'+obj.edit_options.titulo+'</h4>'
+                                                    html += '<div id="resulttxt" name="resulttxt"  style="display:none;text-align:center"></div>'
 			                                        html += '</div>';
 			                                        html += '<div class="modal-body">';
 			                                        html += '<form id="'+id+'_form" action="#" method="post">';
@@ -614,6 +606,7 @@ function loadScript(url, callback)
 			                                        html += '<div class="modal-header">';
 			                                        html += '<a class="close" data-dismiss="modal">×</a>';
 			                                        html += '<h4>'+obj.del_options.titulo+'</h4>'
+                                                    html += '<div id="resulttxt" name="resulttxt"  style="display:none;text-align:center"></div>'
 			                                        html += '</div>';
 			                                        html += '<div class="modal-body">';
 			                                        html += '<form id="'+id+'_form" action="#" method="post">';
