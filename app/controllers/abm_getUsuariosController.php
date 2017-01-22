@@ -11,18 +11,18 @@
 require_once "../app/data/class.conexion.php";
 
 
-
-
 //Elimina registros a partir del modal
 function delDatos()
 {
-    echo 'Hola';
-    //print_r($_SERVER['REQUEST_METHOD']);
-    print_r($_POST);
 
-    /*
+    /*Parser para  metodos put y delete*/
+    parse_str(file_get_contents("php://input"),$post_vars);
+    //print_r($post_vars);
+
+
+
     $db = new MySQL();
-    $a = $_POST['table_field_RecursoID'];
+    $a = $post_vars['table_field_RecursoID'];
     $result = $db->consulta("delete from Tbl_Recursos where RecursoID = '$a'");
     $mensaje = "No pudo Eliminar.";
     $estado = "false";
@@ -43,7 +43,7 @@ function delDatos()
     );
 
     echo json_encode($response);
-    */
+
 }
 
 //Guarda registros a partir del modal
