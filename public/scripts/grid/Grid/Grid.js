@@ -50,9 +50,10 @@ function loadScript(url, callback)
 
     var methods = {
 
-    				export2XLS : function()
+    				export2XLS : function(obj)
     				{
-						$('#table').tableExport({type:'excel',headings: 'true',escape:'false'});
+						var id = $(obj).attr("id");
+						$('#'+id).tableExport({type:'excel',headings: 'true',escape:'false'});
     				},
 
     				ajaxFnc : function (form,obj, accion)
@@ -134,13 +135,13 @@ function loadScript(url, callback)
 							case 2: /*Eliminar*/
     						{
 								$.ajax({
-	                        		type: "POST",//obj.del_options.method,
-			                        data: $(form).serialize(),
-			                        url: obj.del_options.url,
-			                        timeout: obj.timeout,
+									type: obj.del_options.method,
+									data: $("#"+form).serialize(),
+									url: obj.del_options.url,
 									global:true,
-                                    cache:false,
-                                    dataType: "json",
+									cache:false,
+									timeout: obj.timeout,
+									dataType: "json",
 			                        success: function(data) 
 			                        {
                                         console.dir(data)
@@ -177,8 +178,7 @@ function loadScript(url, callback)
     				Sort: function (field, reverse, primer)
     				{
     					var key = primer ? function(x) {return primer(x[field])} :  function(x) {return x[field]};
-
-					   reverse = !reverse ? 1 : -1;
+					   	reverse = !reverse ? 1 : -1;
 
 					   return function (a, b) {
 					       return a = key(a), b = key(b), reverse * ((a > b) - (b > a));
@@ -205,7 +205,6 @@ function loadScript(url, callback)
 			                        dataType: "json",
 			                        success: function(data)
 			                        {
-
 			                        	$("#"+id).empty();
 			                        	var params = $.extend ($(this),obj);
 			                        	//$body.removeClass("loading");
@@ -213,7 +212,6 @@ function loadScript(url, callback)
 			                        },
 	                        		error: function(xhr, resp, text) 
 	                        		{
-              
 						              if(resp === "timeout")
 						              {
 						                alert("Se ha superado el tiempo de peticion");
@@ -291,7 +289,6 @@ function loadScript(url, callback)
 
                                         for(var k in dataset.values  )
                                         {
-                                        
                                         	var cant_columns=0, cant_columns_query=0
                                         	html+="<tr>"
 											for(i=0;i<obj.Columnas.length;i++)
@@ -302,7 +299,6 @@ function loadScript(url, callback)
 	                                        		if(dataset.values[k].hasOwnProperty(t)==true)
 	                                        		{
 	                                        			cant_columns_query++;
-	                                        				
 					                                    if(obj.Columnas[i].visible == "true")
 					                                    {
 					                                    	html+="<td>"+dataset.values[k][t]+"</td>"
@@ -312,7 +308,6 @@ function loadScript(url, callback)
 					                                    	html+="<td style=\"display:none\">"+dataset.values[i][t]+"</td>"	
 					                                    }
 				                                    }
-
 											}
 											html+="</tr>"
                                         }
@@ -353,7 +348,6 @@ function loadScript(url, callback)
 												{
 													html +="<li id='"+id+"_page-"+t+"'><a href='javascript:;'>"+parseInt(t+1)+"</a></li>"
 												}
-
 											}
 
 
@@ -401,7 +395,7 @@ function loadScript(url, callback)
 	                                        $("#"+ id + "_add").click(function () { methods.doModal(params,0); });
 	                                        $("#"+ id + "_edit").click(function () { methods.doModal(params,1); });
 	                                        $("#"+ id + "_del").click(function () { methods.doModal(params,2); });
-	                                        $("#"+ id + "_XLSX").click(function () { methods.export2XLS(); });
+	                                        $("#"+ id + "_XLSX").click(function () { methods.export2XLS(obj); });
 
 	                                        for(i=0;i<obj.Columnas.length;i++)
 	                                        {
@@ -433,9 +427,6 @@ function loadScript(url, callback)
 	                                        	}
 	                                        });
 	                                    }
-
-                                        
-
                               },
                     doModal : function(obj,accion) 
                               {    		var wnd = false;
@@ -446,6 +437,24 @@ function loadScript(url, callback)
 											case 0: /*Agregar*/
 											{
 												wnd=true;
+
+												var html2 = ''
+												html2 += 	'<div id="myModal2"  data-easein="flipBounceYIn" tabindex="-1" data-keyboard="false" data-backdrop="static"  role="dialog"'
+												html2 +=	'aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">'
+												html2 +=	'<div class="modal-dialog" style="opacity: 1; display: block;">';
+												html2 +=	'<div class="modal-content">';
+												html2 +=    '<div class="modal-header">';
+												html2 += 	'<a class="close" data-dismiss="modal">×</a>';
+												html2 += 	'<h4>titulo</h4>';
+												html2 += 	'</div>';
+												html2 += 	'<div class="modal-body">';
+												html2 +=	'</div>';
+												html2 +=	'</div>';
+												html2 +=	'</div>';
+												html2 +=	'</div>';
+
+
+
 												var html =  '<div id="'+id+'_CrudModal" class="modal"  data-easein="flipBounceYIn" tabindex="-1" data-keyboard="false" data-backdrop="static"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">';
 
 		                                        html += '<div class="modal-dialog">';
@@ -487,12 +496,13 @@ function loadScript(url, callback)
 		                                        html += '<div class="modal-footer">';
 		                                        html += '<span class="btn btn-primary" data-dismiss="modal">Cerrar</span>';
 		                                        html += '<span id="btnGuardar" class="btn btn-success" >Guardar</span>';
+												html += '<span id="btnTest" class="btn btn-success" >Test</span>';
 		                                        html += '</div>';  // content
 		                                        html += '</div>';  // dialog
 		                                        html += '</div>';  // footer
 		                                        html += '</div>';  // modalWindow
-		                                        $("#"+id).prepend(html);
-												
+		                                        $('body').prepend(html);
+												$('body').prepend(html2);
 		                                        /*
 		                                        var data = methods.rowClick("table");
                                         		for(i=0;i<data.length;i++)
@@ -500,8 +510,22 @@ function loadScript(url, callback)
                                         			$("#"+id+"_field_"+i).val(data[i]);
                                         		}
 												*/
+		                                        $("#btnTest").click(function(){
+		                                        	//$('#myModal2').find('.modal-body').modal('show');
+													methods.wanimate("myModal2");
+													$("#myModal2").modal();
+													$("#myModal2").modal('show');
+													console.log("second modal")
+
+													$('.modal').on('hidden.bs.modal', function (e) {
+														if($('.modal').hasClass('in')) {
+															$('body').addClass('modal-open');
+														}
+													});
+												})
+
                                         		$("#btnGuardar").click(function(){
-                                        			
+
                                         			var params = $.extend ($(this),obj);
 
                                         			methods.ajaxFnc(id+"_form",params, accion)
@@ -525,7 +549,7 @@ function loadScript(url, callback)
 			                                        html += '<h4>'+obj.edit_options.titulo+'</h4>'
 			                                        html += '</div>';
 			                                        html += '<div class="modal-body">';
-			                                        html += '<form id="'+id+'_form">';
+			                                        html += '<form id="'+id+'_form" action="#" method="post">';
 			                                        /****/
 
 			                                        for(i=0;i<obj.Columnas.length;i++)
@@ -539,7 +563,7 @@ function loadScript(url, callback)
 				                                                 	var required =  (obj.Columnas[i].required == "true") ? 'required' : '';
 				                                                 	html += "<div class='form-group'>"
 				                                                 	html += "  <label for='"+id+"_field_"+i+"'>"+obj.Columnas[i].name+":</label>"
-				                                                 	html += "  <input type='"+obj.Columnas[i].type+"' class='form-control' id='"+id+"_field_"+i+"' style='"+obj.Columnas[i].style+"' maxlength='"+obj.Columnas[i].maxlength+"' " + required +" >"
+				                                                 	html += "  <input type='"+obj.Columnas[i].type+"' class='form-control' id='"+id+"_field_"+obj.Columnas[i].index+"' style='"+obj.Columnas[i].style+"' maxlength='"+obj.Columnas[i].maxlength+"' " + required +" >"
 				                                                 	html += "</div>"
 			                                                 	}
 			                                                }break;
@@ -562,7 +586,7 @@ function loadScript(url, callback)
 			                                        //console.log(data)
 	                                        		for(i=0;i<data.length;i++)
 	                                        		{
-	                                        			$("#"+id+"_field_"+i).val(data[i]);
+														$("#"+id+"_field_"+obj.Columnas[i].index).val(data[i]);
 	                                        		}
 
 	                                        		$("#btnGuardar").click(function(){
@@ -592,7 +616,7 @@ function loadScript(url, callback)
 			                                        html += '<h4>'+obj.del_options.titulo+'</h4>'
 			                                        html += '</div>';
 			                                        html += '<div class="modal-body">';
-			                                        html += '<form id="'+id+'_form" action="#" method="delete">';
+			                                        html += '<form id="'+id+'_form" action="#" method="post">';
 			                                        /****/
 
 			                                        for(i=0;i<obj.Columnas.length;i++)
@@ -604,12 +628,6 @@ function loadScript(url, callback)
 			                                                	if(obj.Columnas[i].editable =="true")
 			                                                	{
 				                                                    var required =  (obj.Columnas[i].required == "true") ? 'required' : '';
-
-					                                                html += "<div class='form-group'>"
-					                                                html += "  <label for='"+id+"_field_"+i+"'>"+obj.Columnas[i].name+":</label>"
-					                                                html += "  <input readonly type='"+obj.Columnas[i].type+"' class='form-control' id='"+id+"_field_"+i+"' style='"+obj.Columnas[i].style+"' maxlength='"+obj.Columnas[i].maxlength+"' " + required +" >"
-					                                                html += "</div>"
-
                                                                     html += "<div class='form-group'>"
                                                                     html += "  <label for='" + id + "_field_" + i + "'>" + obj.Columnas[i].name + ":</label>"
                                                                     html += "  <input readonly type='" + obj.Columnas[i].type + "' class='form-control' value='' name='" + id + "_field_" + obj.Columnas[i].index + "' id='" + id + "_field_" + obj.Columnas[i].index + "'  style='" + obj.Columnas[i].style + "' maxlength='" + obj.Columnas[i].maxlength + "' " + required + " >"
@@ -629,12 +647,11 @@ function loadScript(url, callback)
 			                                        html += '</div>';  // dialog
 			                                        html += '</div>';  // footer
 			                                        html += '</div>';  // modalWindow
-			                                        $('body').append(html);
+			                                        $('body').prepend(html);
 
-			                                        
 	                                        		for(i=0;i<data.length;i++)
 	                                        		{
-	                                        			$("#"+id+"_field_"+i).val(data[i]);
+	                                        			$("#"+id+"_field_"+obj.Columnas[i].index).val(data[i]);
 	                                        		}
 
 	                                        		$("#btnGuardar").click(function(){
@@ -714,8 +731,7 @@ function loadScript(url, callback)
 	                                        /*fin animacion aleatoria*/
 	                                        $("#"+id+"_CrudModal").modal();
 	                                        $("#"+id+"_CrudModal").modal('show');
-
-	                                        $("#"+id+"_CrudModal").on('hidden.bs.modal', function (e) 
+	                                        $("#"+id+"_CrudModal").on('hidden.bs.modal', function (e)
 	                                        {
 	                                            $(this).remove();
 	                                        });
@@ -749,9 +765,9 @@ function loadScript(url, callback)
 
 				    	})
 				    })
-				});            	
+				});
 
-				
+
 
                 var obj = $.extend ($(this),config);
                 methods.getDatos(obj,1,methods.doTable);
