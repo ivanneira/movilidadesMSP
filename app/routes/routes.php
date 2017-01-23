@@ -27,14 +27,18 @@ $app->any('/', function($req, $res, $args) use($app) {
 //Index de usuario autenticado
 $app->get('/aindex', function($req, $res) use($app){
 
-    if(isset($_SESSION['menu'])){
-        //Acá renderiza la última página en la que se posicionó
-        //return $res->withStatus(302)->withHeader('Location',$_SESSION['menu']);
-        echo '<script>pageLoad('.$_SESSION['menu'].') </script>';
+//    if(isset($_SESSION['menu'])){
+//        //Acá renderiza la última página en la que se posicionó
+//        //return $res->withStatus(302)->withHeader('Location',$_SESSION['menu']);
+//        if($_SESSION['menu'] == 'aindex'){
+//            return $this->renderer->render($res, 'aindex.php');
+//        }
+//
+//    }else{
+//        return $this->renderer->render($res, 'aindex.php');
+//    }
 
-    }else{
-        return $this->renderer->render($res, 'aindex.php');
-    }
+    return $this->renderer->render($res, 'aindex.php');
 
 });
 
