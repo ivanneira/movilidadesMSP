@@ -66,6 +66,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+<!--    css personalizado-->
+    <link rel="stylesheet" href="styles/custom.css">
+
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -360,7 +363,7 @@ desired effect
     </section>
 
     <!-- Main content -->
-    <section class="content">
+    <section class="mainContent">
 
       <!-- Your Page Content Here -->
 <!--      <div id="map" class="col-lg-12"></div>-->

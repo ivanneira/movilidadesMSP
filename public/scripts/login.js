@@ -25,4 +25,6 @@ $(function () {
         }
     });
 
+    $("#txt_usr").focus();
+
 });

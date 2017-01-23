@@ -12,6 +12,7 @@
 
         }).done(function(data) {
 
-            $(".content").html(data);
+            console.log(data)
+            $(".mainContent").html(data);
         });
    }

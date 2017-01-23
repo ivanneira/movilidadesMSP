@@ -402,21 +402,21 @@ function loadScript(url, callback)
 	                                        {
 												obj.ABM[i].text = typeof(obj.ABM[i].text) == 'undefined' ? "" : obj.ABM[i].text;
 	                                            if(obj.ABM[i].refresh == "true")
-	                                                btn_options += "<button id='"+id+"_refresh' class='btn btn-primary '><i class='grid-icon icon-refresh'>&#xe800;</i>"+obj.ABM[i].text+"</button> ";
+	                                                btn_options += "<button id='"+id+"_refresh' class='btn btn-primary margin3' data-toggle='tooltip' data-placement='top' title='Refrescar'><i class='grid-icon icon-refresh'>&#xe800;</i>"+obj.ABM[i].text+"</button> ";
 
 	                                            if(obj.ABM[i].add == "true")
-	                                                btn_options += "<button id='"+id+"_add' class='btn btn-success '><i class='grid-icon icon-add'>&#xe806;</i> "+obj.ABM[i].text+"</button> ";
+	                                                btn_options += "<button id='"+id+"_add' class='btn btn-success margin3' data-toggle='tooltip' data-placement='top' title='Agregar'><i class='grid-icon icon-add'>&#xe806;</i> "+obj.ABM[i].text+"</button> ";
 	                                        
 	                                             if(obj.ABM[i].edit == "true")
-	                                                btn_options += "<button id='"+id+"_edit' class='btn btn-warning'><i class='grid-icon icon-edit'>&#xe804;</i>"+obj.ABM[i].text+"</button> ";
+	                                                btn_options += "<button id='"+id+"_edit' class='btn btn-warning margin3' data-toggle='tooltip' data-placement='top' title='Editar'><i class='grid-icon icon-edit'>&#xe804;</i>"+obj.ABM[i].text+"</button> ";
 
 	                                             if(obj.ABM[i].delete == "true")
-	                                                btn_options += "<button id='"+id+"_del'  class='btn btn-danger'><i class='grid-icon icon-del'>&#xe803;</i>"+obj.ABM[i].text+"</button> ";
+	                                                btn_options += "<button id='"+id+"_del'  class='btn btn-danger margin3' data-toggle='tooltip' data-placement='top' title='Borrar'><i class='grid-icon icon-del'>&#xe803;</i>"+obj.ABM[i].text+"</button> ";
 	                                        }
 
 	                                        if(obj.export2XLS == "true")
 	                                        {
-	                                        	btn_options += "<button id='"+id+"_XLSX' class='btn btn-primary'><i class='grid-icon icon-xls'>&#xe805;</i> Exportar a XLS</button>";
+	                                        	btn_options += "<button id='"+id+"_XLSX' class='btn btn-primary margin3' data-toggle='tooltip' data-placement='top' title='Exportar a excel'><i class='grid-icon icon-xls'>&#xe805;</i> </button>";
 	                                        }
 	                                        $("#"+id+"_buttons").append(btn_options);    
 
