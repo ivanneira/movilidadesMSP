@@ -1,3 +1,7 @@
+<?php
+//guardo posición de menú en la variable session
+ $_SESSION['menu'] = "abm_usuarios";
+?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -9,11 +13,20 @@
     <script src="scripts/grid/Grid/Grid.js"></script>
 
 </head>
+
 <body>
 
-<div id="table" ></div>
+<div class="box">
+    <section class="content-header">
+        <h1>Administración de usuarios</h1>
+    </section>
 
+    <section class="content">
+        <div id="table"  ></div>
+    </section>
+</div>
 </body>
+
 </html>
 
 
@@ -24,10 +37,10 @@
     {
 
         var Options = [
-            {refresh: "true",text:"Refrescar"},
-            {add: "true",text:"Agregar"},
-            {edit: "true",text:"Editar"},
-            {delete: "true",text:"Eliminar"}];
+            {refresh: "true"},
+            {add: "true"},
+            {edit: "true"},
+            {'delete': "true"}];
 
         var colheaders = [
             {index : "RecursoID", name: "id", editable: "true",  visible: "false", type: "text",placeholder:"", maxlength: "10", required: "false" },
@@ -52,7 +65,7 @@
 
         var x = $('#table').Grid({  // calls the init method
 
-            Titulo : 'Administrar Usuarios',
+            Titulo : '',
             ABM: Options,
             Columnas: colheaders,
             edit_options : edit_options,

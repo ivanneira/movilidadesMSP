@@ -1,3 +1,7 @@
+<?php
+//guardo posición de menú en la variable session
+//$_SESSION['menu'] = 7;
+?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -10,8 +14,16 @@
 
 </head>
 <body>
-<div id="table"  ></div>
 
+    <div class="box">
+        <section class="content-header">
+            <h1>Administración de permisos</h1>
+        </section>
+
+        <section class="content">
+            <div id="table"  ></div>
+        </section>
+    </div>
 </body>
 </html>
 
@@ -26,7 +38,7 @@
             {refresh: "true",text:"Refrescar"},
             {add: "true",text:"Agregar"},
             {edit: "true",text:"Editar"},
-            {delete: "true",text:"Eliminar"}];
+            {'delete': "true",text:"Eliminar"}];
 
         var colheaders = [
             {index : "id", name: "id", editable: "true",  visible: "true", type: "text",placeholder:"", maxlength: "10", required: "false" },

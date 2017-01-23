@@ -1,3 +1,4 @@
+
 <?php
 /****
 GET: Para consultar y leer recursos
@@ -11,10 +12,11 @@ include ("login.php");
 
 
 //engancha todos
-$app->get('/', function($req, $res, $args) use($app) {
+$app->any('/', function($req, $res, $args) use($app) {
 
         if(isset($_SESSION['user']->id)){
 
+            return $this->renderer->render($res, 'aindex.php');
         }else {
             return $res->withStatus(302)->withHeader('Location','login');
         }
@@ -25,7 +27,15 @@ $app->get('/', function($req, $res, $args) use($app) {
 //Index de usuario autenticado
 $app->get('/aindex', function($req, $res) use($app){
 
-    return $this->renderer->render($res, 'aindex.php');
+    if(isset($_SESSION['menu'])){
+        //Acá renderiza la última página en la que se posicionó
+        //return $res->withStatus(302)->withHeader('Location',$_SESSION['menu']);
+        echo '<script>pageLoad('.$_SESSION['menu'].') </script>';
+
+    }else{
+        return $this->renderer->render($res, 'aindex.php');
+    }
+
 });
 
 

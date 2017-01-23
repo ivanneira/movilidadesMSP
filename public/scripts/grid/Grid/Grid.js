@@ -284,6 +284,7 @@ function loadScript(url, callback)
                                     var id = $(obj).attr("id");
 									
                                     var html = "<table id='"+id+"_table' class='table table-striped'><thead>"
+								  		html +="<div id="+id+"_buttons></div> <hr>"
                                         html +="<tr>"
                               			
                                         for(i=0;i<obj.Columnas.length; i++)
@@ -379,7 +380,7 @@ function loadScript(url, callback)
 
 
 											html +="</ul>"
-	                                        html +="<div id="+id+"_buttons></div>"
+
 
 	                                        $("#"+id).append(html);
 	                                        
@@ -399,17 +400,18 @@ function loadScript(url, callback)
 	                                        var btn_options = "<hr>";    
 	                                        for(i=0; i<obj.ABM.length;i++)
 	                                        {
+												obj.ABM[i].text = typeof(obj.ABM[i].text) == 'undefined' ? "" : obj.ABM[i].text;
 	                                            if(obj.ABM[i].refresh == "true")
-	                                                btn_options += "<button id='"+id+"_refresh' class='btn-xs btn-primary '><i class='grid-icon icon-refresh'>&#xe800;</i>"+obj.ABM[i].text+"</button> ";
+	                                                btn_options += "<button id='"+id+"_refresh' class='btn btn-primary '><i class='grid-icon icon-refresh'>&#xe800;</i>"+obj.ABM[i].text+"</button> ";
 
 	                                            if(obj.ABM[i].add == "true")
-	                                                btn_options += "<button id='"+id+"_add' class='btn-xs btn-success '><i class='grid-icon icon-add'>&#xe806;</i> "+obj.ABM[i].text+"</button> ";
+	                                                btn_options += "<button id='"+id+"_add' class='btn btn-success '><i class='grid-icon icon-add'>&#xe806;</i> "+obj.ABM[i].text+"</button> ";
 	                                        
 	                                             if(obj.ABM[i].edit == "true")
-	                                                btn_options += "<button id='"+id+"_edit' class='btn-xs btn-warning'><i class='grid-icon icon-edit'>&#xe804;</i>"+obj.ABM[i].text+"</button> ";
+	                                                btn_options += "<button id='"+id+"_edit' class='btn btn-warning'><i class='grid-icon icon-edit'>&#xe804;</i>"+obj.ABM[i].text+"</button> ";
 
 	                                             if(obj.ABM[i].delete == "true")
-	                                                btn_options += "<button id='"+id+"_del'  class='btn-xs btn-danger'><i class='grid-icon icon-del'>&#xe803;</i>"+obj.ABM[i].text+"</button> ";
+	                                                btn_options += "<button id='"+id+"_del'  class='btn btn-danger'><i class='grid-icon icon-del'>&#xe803;</i>"+obj.ABM[i].text+"</button> ";
 	                                        }
 
 	                                        if(obj.export2XLS == "true")

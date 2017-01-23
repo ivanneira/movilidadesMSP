@@ -8,7 +8,7 @@
             url: routes,
             type: "GET",
             global: true,
-            cache:false,
+            cache:false
 
         }).done(function(data) {
 
