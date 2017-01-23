@@ -416,7 +416,7 @@ function loadScript(url, callback)
 
 	                                        if(obj.export2XLS == "true")
 	                                        {
-	                                        	btn_options += "<button id='"+id+"_XLSX' class='btn-xs btn-primary'><i class='grid-icon icon-xls'>&#xe805;</i> Exportar a XLS</button>";
+	                                        	btn_options += "<button id='"+id+"_XLSX' class='btn btn-primary'><i class='grid-icon icon-xls'>&#xe805;</i> Exportar a XLS</button>";
 	                                        }
 	                                        $("#"+id+"_buttons").append(btn_options);    
 
